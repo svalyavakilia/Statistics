@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="StatisticsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-18T18:22:49" hostname="LAPTOP-2F18T90T" time="0.01">
+  <properties/>
+  <testcase name="testThreeOverTwoIqr" classname="StatisticsTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
