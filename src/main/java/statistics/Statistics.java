@@ -4,20 +4,26 @@ import java.util.Arrays;
 
 /**
  * This is a utility class which provides methods for data analysis.
- * Uses array of doubles as a data source.
+ * It uses array of doubles as a data source.
  *
  * @author svalyavakilia
  */
 public class Statistics {
     /**
-     * This method checks if given array is null or has more than two values.
+     * No need to instantiate this class as all its members are static.
+     */
+    private Statistics() {}
+
+    /**
+     * This method checks if a given array is null or has enough data
+     * to analyse.
      *
      * @param data array to check.
      * @param minimumPermissibleLength minimum permissible length of a given
      *                                 array.
      * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has length less than minimum
-     *                                permissible.
+     * @throws NotEnoughDataException if data has length less than
+     *                                permissible minimum.
      */
     private static void checkIfDataIsValid(final double[] data,
                                            final int minimumPermissibleLength)
@@ -35,7 +41,7 @@ public class Statistics {
     }
 
     /**
-     * This method sorts given array in ascending order.
+     * This method sorts a given array in ascending order.
      *
      * @param data array to sort.
      * @return reference to the same array object but sorted.
@@ -53,7 +59,7 @@ public class Statistics {
     }
 
     /**
-     * This method sorts given array in descending order.
+     * This method sorts a given array in descending order.
      *
      * @param data array to sort.
      * @return reference to the same array object but sorted.
@@ -126,8 +132,9 @@ public class Statistics {
      * @throws NullPointerException if data is null.
      * @throws NotEnoughDataException if data is empty.
      */
-    public static double max(final double[] data) throws NullPointerException, 
-                                                         NotEnoughDataException {
+    public static double max(final double[] data)
+                                            throws NullPointerException,
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         double currentMax = data[0];
@@ -164,7 +171,7 @@ public class Statistics {
     }
 
     /**
-     * This method returns median of a given array.
+     * This method calculates median of a given array.
      *
      * @param data array to find median of.
      * @return median of a given array.
@@ -192,7 +199,7 @@ public class Statistics {
 
     /**
      * This method returns the median of the first half of a given array
-     * (i.e. the part before the actual median of a given array) which is also
+     * (the part before the actual median of a given array) which is also
      * called the first quartile.
      *
      * @param data array to find the first quartile of.
@@ -212,7 +219,7 @@ public class Statistics {
 
     /**
      * This method returns the median of the second half of a given array
-     * (i.e. the part after the actual median of a given array) which is also
+     * (the part after the actual median of a given array) which is also
      * called the third quartile.
      *
      * @param data array to find the third quartile of.
@@ -247,8 +254,9 @@ public class Statistics {
      * @throws NullPointerException if data is null.
      * @throws NotEnoughDataException if data has less than two values.
      */
-    public static double iqr(final double[] data) throws NullPointerException, 
-                                                         NotEnoughDataException {
+    public static double iqr(final double[] data)
+                                            throws NullPointerException,
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         return thirdQuartile(data) - firstQuartile(data);
@@ -272,10 +280,10 @@ public class Statistics {
     }
 
     /**
-     * This method calculates the variance of given values.
+     * This method calculates the variance of the given values.
      *
      * @param data array to find variance of.
-     * @return variance.
+     * @return variance of the given values.
      * @throws NullPointerException if data is null.
      * @throws NotEnoughDataException if data has less than two values.
      */
@@ -300,7 +308,7 @@ public class Statistics {
     }
 
     /**
-     * This method return an overall statistics on this data.
+     * This method returns an overall statistics on this data.
      *
      * @param data array with values.
      * @return overall statistics.
