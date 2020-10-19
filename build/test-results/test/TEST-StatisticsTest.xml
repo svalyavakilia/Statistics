@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StatisticsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-18T18:22:49" hostname="LAPTOP-2F18T90T" time="0.01">
+<testsuite name="StatisticsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-19T16:59:38" hostname="LAPTOP-2F18T90T" time="0.147">
   <properties/>
-  <testcase name="testThreeOverTwoIqr" classname="StatisticsTest" time="0.01"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testOverallStatistics" classname="StatisticsTest" time="0.147"/>
+  <system-out><![CDATA[Minimum: 5.5
+Maximum: 10.5
+Average arithmetic: 8.538461538461538
+First quartile: 7.55
+Median: 8.6
+Third quartile: 9.75
+IQR: 2.2
+3/2 IQR: 3.3000000000000003
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -10,21 +10,27 @@ import java.util.Arrays;
  */
 public class Statistics {
     /**
-     * This method checks if given array is null or has more than two items.
+     * This method checks if given array is null or has more than two values.
      *
      * @param data array to check.
      * @param minimumPermissibleLength minimum permissible length of a given
      *                                 array.
-     * @throws InvalidDataException if data is null or has less than minimum
-     *                              permissible length.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data has length less than minimum
+     *                                permissible.
      */
     private static void checkIfDataIsValid(final double[] data,
                                            final int minimumPermissibleLength)
-                                            throws InvalidDataException {
-        if ((data == null) || (data.length < minimumPermissibleLength)) {
-            final String message = "Data is null or has not enough data!";
+                                            throws NullPointerException,
+                                                   NotEnoughDataException {
+        if (data == null) {
+            throw new NullPointerException();
+        } else if (data.length < minimumPermissibleLength) {
+            final String message = "Data doesn't have enough data!" + 
+                                   "Minimum quantity of elements needed: " + 
+                                   minimumPermissibleLength + ".";
 
-            throw new InvalidDataException(message);
+            throw new NotEnoughDataException(message);
         }
     }
 
@@ -33,10 +39,12 @@ public class Statistics {
      *
      * @param data array to sort.
      * @return reference to the same array object but sorted.
-     * @throws InvalidDataException if data is null.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data is empty.
      */
     public static double[] sortInAscendingOrder(final double[] data)
-                                            throws InvalidDataException {
+                                            throws NullPointerException,
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 0);
 
         Arrays.sort(data);
@@ -49,10 +57,12 @@ public class Statistics {
      *
      * @param data array to sort.
      * @return reference to the same array object but sorted.
-     * @throws InvalidDataException if data is null.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data is empty.
      */
     public static double[] sortInDescendingOrder(final double[] data)
-                                            throws InvalidDataException {
+                                            throws NullPointerException, 
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 0);
 
         Arrays.sort(data);
@@ -70,13 +80,14 @@ public class Statistics {
      * @param data array in which two items will be swapped.
      * @param firstIndex index of the first value to swap.
      * @param secondIndex index of the second value to swap.
-     * @throws InvalidDataException if data is null or has less than two
-     *                              elements.
+     * @throws NullPointerException if data is null.                   
+     * @throws NotEnoughDataException if data has less than two values.
      */
     private static void swap(final double[] data,
                              final int firstIndex,
                              final int secondIndex)
-                                            throws InvalidDataException {
+                                            throws NullPointerException, 
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         final double valueUnderTheFirstIndex = data[firstIndex];
@@ -89,9 +100,11 @@ public class Statistics {
      *
      * @param data array to search minimum value in.
      * @return minimum value in a given array.
-     * @throws InvalidDataException if data is null or empty.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data is empty.
      */
-    public static double min(final double[] data) throws InvalidDataException {
+    public static double min(final double[] data) throws NullPointerException, 
+                                                         NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         double currentMinimum = data[0];
@@ -110,9 +123,11 @@ public class Statistics {
      *
      * @param data array to search maximum value in.
      * @return maximum value in a given array.
-     * @throws InvalidDataException if data is null or empty.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data is empty.
      */
-    public static double max(final double[] data) throws InvalidDataException {
+    public static double max(final double[] data) throws NullPointerException, 
+                                                         NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         double currentMax = data[0];
@@ -131,10 +146,12 @@ public class Statistics {
      *
      * @param data array to find average arithmetic of.
      * @return average arithmetic of a given array.
-     * @throws InvalidDataException if data is null or empty.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data is empty.
      */
     public static double averageArithmetic(final double[] data)
-                                            throws InvalidDataException {
+                                            throws NullPointerException, 
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         double sum = 0;
@@ -151,10 +168,12 @@ public class Statistics {
      *
      * @param data array to find median of.
      * @return median of a given array.
-     * @throws InvalidDataException if data is null or empty.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data is empty.
      */
     public static double median(final double[] data)
-                                            throws InvalidDataException {
+                                            throws NullPointerException, 
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         Arrays.sort(data);
@@ -178,11 +197,12 @@ public class Statistics {
      *
      * @param data array to find the first quartile of.
      * @return the first quartile.
-     * @throws InvalidDataException if data is null or has less than two
-     *                              elements.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data has less than two values.
      */
     public static double firstQuartile(final double[] data)
-                                            throws InvalidDataException {
+                                            throws NullPointerException, 
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         sortInAscendingOrder(data);
@@ -197,11 +217,12 @@ public class Statistics {
      *
      * @param data array to find the third quartile of.
      * @return the third quartile.
-     * @throws InvalidDataException if data is null or has less than two
-     *                              elements.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data has less than two values.
      */
     public static double thirdQuartile(final double[] data)
-                                            throws InvalidDataException {
+                                            throws NullPointerException, 
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         sortInAscendingOrder(data);
@@ -223,10 +244,11 @@ public class Statistics {
      *
      * @param data array to find IQR of.
      * @return interquartile range.
-     * @throws InvalidDataException if data is null or has less than two
-     *                              elements.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data has less than two values.
      */
-    public static double iqr(final double[] data) throws InvalidDataException {
+    public static double iqr(final double[] data) throws NullPointerException, 
+                                                         NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         return thirdQuartile(data) - firstQuartile(data);
@@ -238,13 +260,65 @@ public class Statistics {
      *
      * @param data array to find 3/2 IQR of.
      * @return 3/2 of an interquartile range.
-     * @throws InvalidDataException if data is null or has less than two
-     *                              elements.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data has less than two values.
      */
     public static double threeOverTwoIqr(final double[] data)
-                                            throws InvalidDataException {
+                                            throws NullPointerException, 
+                                                   NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         return (double) 3 / 2 * iqr(data);
+    }
+
+    /**
+     * This method calculates the variance of given values.
+     *
+     * @param data array to find variance of.
+     * @return variance.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data has less than two values.
+     */
+    public static double variance(final double[] data)
+                                            throws NullPointerException,
+                                                   NotEnoughDataException {
+        checkIfDataIsValid(data, 2);
+
+        double variance = (double) 1 / (data.length - 1);
+
+        final double averageArithmetic = averageArithmetic(data);
+
+        double sumOfSquaredDifferences = 0;
+
+        for (final double value: data) {
+            sumOfSquaredDifferences += Math.pow(value - averageArithmetic, 2);
+        }
+
+        variance *= sumOfSquaredDifferences;
+
+        return variance;
+    }
+
+    /**
+     * This method return an overall statistics on this data.
+     *
+     * @param data array with values.
+     * @return overall statistics.
+     * @throws NullPointerException if data is null.
+     * @throws NotEnoughDataException if data has less than two values.
+     */
+    public static String overallStatistics(final double[] data)
+                                            throws NullPointerException,
+                                                   NotEnoughDataException {
+        checkIfDataIsValid(data, 2);
+
+        return "Minimum: " + min(data) + "\n" +
+               "Maximum: " + max(data) + "\n" +
+               "Average arithmetic: " + averageArithmetic(data) + "\n" +
+               "First quartile: " + firstQuartile(data) + "\n" +
+               "Median: " + median(data) + "\n" +
+               "Third quartile: " + thirdQuartile(data) + "\n" +
+               "IQR: " + iqr(data) + "\n" +
+               "3/2 IQR: " + threeOverTwoIqr(data);
     }
 }
