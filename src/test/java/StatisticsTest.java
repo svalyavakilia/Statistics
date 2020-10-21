@@ -1,3 +1,4 @@
+import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 import statistics.NotEnoughDataException;
@@ -172,6 +173,21 @@ public class StatisticsTest {
 
         for (int index = 0; index < modesAndTheirQuantity.length - 1; ++index) {
             System.out.println(modesAndTheirQuantity[index] + " : " + quantity);
+        }
+    }
+
+    @Test
+    public void testFrequencies() throws NotEnoughDataException {
+        final double[] data = {1, 1, 2, 3, 3, 4, 2, 3, 4, 3,
+                               3, 1, 3, 1, 2, 3, 1, 3, 2, 1};
+
+        final Map<Double, Double> valuesAndTheirFrequencies =
+                                                Statistics.frequencies(data);
+
+        for (final double value: valuesAndTheirFrequencies.keySet()) {
+            final double frequency = valuesAndTheirFrequencies.get(value);
+
+            System.out.println(value + ": " + frequency);
         }
     }
 }

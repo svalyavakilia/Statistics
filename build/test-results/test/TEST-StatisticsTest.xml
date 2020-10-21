@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StatisticsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-21T09:13:47" hostname="LAPTOP-2F18T90T" time="0.192">
+<testsuite name="StatisticsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-21T11:17:02" hostname="LAPTOP-2F18T90T" time="0.06">
   <properties/>
-  <testcase name="testOverallStatistics" classname="StatisticsTest" time="0.192"/>
-  <system-out><![CDATA[Minimum: 3.0
-Maximum: 18.0
-Average arithmetic: 9.4
-Mode(s): 12.0; quantity: 4
-First quartile: 7.0
-Median: 10.0
-Third quartile: 12.0
-IQR: 5.0
-3/2 IQR: 7.5
+  <testcase name="testFrequencies" classname="StatisticsTest" time="0.06"/>
+  <system-out><![CDATA[1.0: 0.3
+2.0: 0.2
+4.0: 0.1
+3.0: 0.4
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

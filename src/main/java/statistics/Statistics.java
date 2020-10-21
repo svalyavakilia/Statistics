@@ -2,7 +2,9 @@ package statistics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This is a utility class which provides methods for data analysis.
@@ -21,11 +23,10 @@ public class Statistics {
      * to analyse.
      *
      * @param data array to check.
-     * @param minimumPermissibleLength minimum permissible length of a given
-     *                                 array.
+     * @param minimumPermissibleLength minimum permissible amount of values.
      * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has length less than
-     *                                permissible minimum.
+     * @throws NotEnoughDataException if the number of values in a given
+     *                                array is less than required.
      */
     private static void checkIfDataIsValid(final double[] data,
                                            final int minimumPermissibleLength)
@@ -46,7 +47,7 @@ public class Statistics {
      *
      * @param data array to sort.
      * @return reference to the same array object but sorted.
-     * @throws NullPointerException if data is null.
+     * @throws NullPointerException if given array is null.
      */
     public static double[] sortInAscendingOrder(final double[] data) {
         Arrays.sort(data);
@@ -59,7 +60,7 @@ public class Statistics {
      *
      * @param data array to sort.
      * @return reference to the same array object but sorted.
-     * @throws NullPointerException if data is null.
+     * @throws NullPointerException if given array is null.
      */
     public static double[] sortInDescendingOrder(final double[] data) {
         Arrays.sort(data);
@@ -77,7 +78,7 @@ public class Statistics {
      * @param data array in which two items will be swapped.
      * @param firstIndex index of the first value to swap.
      * @param secondIndex index of the second value to swap.
-     * @throws NullPointerException if data is null.
+     * @throws NullPointerException if given array is null.
      */
     private static void swap(final double[] data,
                              final int firstIndex,
@@ -92,8 +93,8 @@ public class Statistics {
      *
      * @param data array to search minimum value in.
      * @return minimum value in a given array.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data is empty.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array is empty.
      */
     public static double min(final double[] data)
                                             throws NotEnoughDataException {
@@ -115,8 +116,8 @@ public class Statistics {
      *
      * @param data array to search maximum value in.
      * @return maximum value in a given array.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data is empty.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array is empty.
      */
     public static double max(final double[] data)
                                             throws NotEnoughDataException {
@@ -138,8 +139,8 @@ public class Statistics {
      *
      * @param data array to find average arithmetic of.
      * @return average arithmetic of a given array.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data is empty.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array is empty.
      */
     public static double averageArithmetic(final double[] data)
                                             throws NotEnoughDataException {
@@ -159,8 +160,8 @@ public class Statistics {
      *
      * @param data array to find median of.
      * @return median of a given array.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data is empty.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array is empty.
      */
     public static double median(final double[] data)
                                             throws NotEnoughDataException {
@@ -187,8 +188,8 @@ public class Statistics {
      *
      * @param data array to find the first quartile of.
      * @return the first quartile.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has less than two values.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array has less than two values.
      */
     public static double firstQuartile(final double[] data)
                                             throws NotEnoughDataException {
@@ -206,8 +207,8 @@ public class Statistics {
      *
      * @param data array to find the third quartile of.
      * @return the third quartile.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has less than two values.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array has less than two values.
      */
     public static double thirdQuartile(final double[] data)
                                             throws NotEnoughDataException {
@@ -232,8 +233,8 @@ public class Statistics {
      *
      * @param data array to find IQR of.
      * @return interquartile range.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has less than two values.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array has less than two values.
      */
     public static double iqr(final double[] data)
                                             throws NotEnoughDataException {
@@ -248,8 +249,8 @@ public class Statistics {
      *
      * @param data array to find 3/2 IQR of.
      * @return 3/2 of an interquartile range.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has less than two values.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array has less than two values.
      */
     public static double threeOverTwoIqr(final double[] data)
                                             throws NotEnoughDataException {
@@ -263,8 +264,8 @@ public class Statistics {
      *
      * @param data array to find variance of.
      * @return variance of the given values.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has less than two values.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array has less than two values.
      */
     public static double variance(final double[] data)
                                             throws NotEnoughDataException {
@@ -291,8 +292,8 @@ public class Statistics {
      * @param data array to find mode(s) of.
      * @return an array with modes and (!!!) their quantity as the last value of
      *         the array.
-     * @throws NullPointerException is data is null.
-     * @throws NotEnoughDataException if data is empty.
+     * @throws NullPointerException is given array is null.
+     * @throws NotEnoughDataException if given array is empty.
      */
     public static double[] mode(final double[] data)
             throws NotEnoughDataException {
@@ -346,12 +347,50 @@ public class Statistics {
     }
 
     /**
-     * This method returns an overall statistics on this data.
+     * This method returns elements and their frequencies.
+     * For instance, if we have twenty values and the value 18 appears five
+     * times, then the frequency of 18 will be 5/20 or 0.25.
+     *
+     * @param data a given array of values.
+     * @return values and their frequencies.
+     * @throws NullPointerException is given array is null.
+     * @throws NotEnoughDataException if given array is empty.
+     */
+    public static Map<Double, Double> frequencies(final double[] data)
+                                            throws NotEnoughDataException {
+        checkIfDataIsValid(data, 1);
+
+        final Map<Double, Double> valuesAndTheirFrequencies = new HashMap<>();
+
+        for (final double value: data) {
+            if (valuesAndTheirFrequencies.containsKey(value)) {
+                final double oldValue = valuesAndTheirFrequencies.get(value);
+                final double newValue = oldValue + 1;
+
+                valuesAndTheirFrequencies.replace(value, oldValue, newValue);
+            } else {
+                valuesAndTheirFrequencies.put(value, 1.0);
+            }
+        }
+
+        for (final double value: valuesAndTheirFrequencies.keySet()) {
+            final double frequency = valuesAndTheirFrequencies.get(value);
+
+            valuesAndTheirFrequencies.replace(value,
+                                              frequency,
+                                              frequency / data.length);
+        }
+
+        return valuesAndTheirFrequencies;
+    }
+
+    /**
+     * This method returns an overall statistics on values in a given array.
      *
      * @param data array with values.
      * @return overall statistics.
-     * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data has less than two values.
+     * @throws NullPointerException if given array is null.
+     * @throws NotEnoughDataException if given array has less than two values.
      */
     public static String overallStatistics(final double[] data)
                                             throws NotEnoughDataException {
