@@ -361,8 +361,6 @@ public class Statistics {
 
         final double[] modesAndTheirQuantity = mode(data);
 
-        // [3, 5, 7, 10], length == 4
-        //  0, 1, 2, 3
         for (int index = 0; index < modesAndTheirQuantity.length - 1; ++index) {
             if (index != modesAndTheirQuantity.length - 2) {
                 modes.append(modesAndTheirQuantity[index]).append(", ");
@@ -374,8 +372,7 @@ public class Statistics {
         final int modeQuantity =
                 (int) modesAndTheirQuantity[modesAndTheirQuantity.length - 1];
 
-        modes.append("; quantity: ")
-             .append(modeQuantity);
+        modes.append("; quantity: ").append(modeQuantity);
 
         return "Minimum: " + min(data) + "\n" +
                "Maximum: " + max(data) + "\n" +
