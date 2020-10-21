@@ -1,8 +1,9 @@
-Minimum: 5.5
-Maximum: 10.5
-&Average arithmetic: 8.538461538461538
-First quartile: 7.55
-Median: 8.6
-Third quartile: 9.75
-	IQR: 2.2
-3/2 IQR: 3.3000000000000003
+Minimum: 3.0
+Maximum: 18.0
+Average arithmetic: 9.4
+Mode(s): 12.0; quantity: 4
+First quartile: 7.0
+Median: 10.0
+Third quartile: 12.0
+	IQR: 5.0
+3/2 IQR: 7.5

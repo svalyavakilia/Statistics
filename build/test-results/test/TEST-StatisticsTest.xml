@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StatisticsTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-10-19T17:20:48" hostname="LAPTOP-2F18T90T" time="0.245">
+<testsuite name="StatisticsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-21T09:13:47" hostname="LAPTOP-2F18T90T" time="0.192">
   <properties/>
-  <testcase name="testFirstQuartile" classname="StatisticsTest" time="0.012"/>
-  <testcase name="testAverageArithmetic" classname="StatisticsTest" time="0.0"/>
-  <testcase name="testIqr" classname="StatisticsTest" time="0.0"/>
-  <testcase name="testMax" classname="StatisticsTest" time="0.0"/>
-  <testcase name="testMin" classname="StatisticsTest" time="0.0"/>
-  <testcase name="testVariance" classname="StatisticsTest" time="0.002"/>
-  <testcase name="testSortInAscendingOrder" classname="StatisticsTest" time="0.004"/>
-  <testcase name="testThirdQuartile" classname="StatisticsTest" time="0.0"/>
-  <testcase name="testThreeOverTwoIqr" classname="StatisticsTest" time="0.0"/>
-  <testcase name="testOverallStatistics" classname="StatisticsTest" time="0.219"/>
-  <testcase name="testMedian" classname="StatisticsTest" time="0.0"/>
-  <testcase name="testSortInDescendingOrder" classname="StatisticsTest" time="0.001"/>
-  <system-out><![CDATA[Minimum: 5.5
-Maximum: 10.5
-Average arithmetic: 8.538461538461538
-First quartile: 7.55
-Median: 8.6
-Third quartile: 9.75
-IQR: 2.2
-3/2 IQR: 3.3000000000000003
+  <testcase name="testOverallStatistics" classname="StatisticsTest" time="0.192"/>
+  <system-out><![CDATA[Minimum: 3.0
+Maximum: 18.0
+Average arithmetic: 9.4
+Mode(s): 12.0; quantity: 4
+First quartile: 7.0
+Median: 10.0
+Third quartile: 12.0
+IQR: 5.0
+3/2 IQR: 7.5
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

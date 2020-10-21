@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class StatisticsTest {
     @Test
-    public void testSortInAscendingOrder() throws NotEnoughDataException {
+    public void testSortInAscendingOrder() {
         final double[] sorted = {3, 5, 7, 8, 12, 17, 18, 21, 69, 169};
         final double[] notSorted = {69, 12, 3, 169, 7, 17, 8, 21, 5, 18};
 
@@ -31,7 +31,7 @@ public class StatisticsTest {
     }
 
     @Test
-    public void testSortInDescendingOrder() throws NotEnoughDataException {
+    public void testSortInDescendingOrder() {
         final double[] sorted = {169, 69, 21, 18, 17, 12, 8, 7, 5, 3};
         final double[] notSorted = {69, 12, 3, 169, 7, 17, 8, 21, 5, 18};
 
@@ -155,11 +155,23 @@ public class StatisticsTest {
     }
 
     @Test
-    public void testOverallStatistics() throws NullPointerException,
-                                               NotEnoughDataException {
-        final double[] data = {5.5, 6.5, 8, 9, 10, 9.4, 8.6,
-                               9.5, 7.5, 7.6, 10.4, 10.5, 8.5};
+    public void testOverallStatistics() throws NotEnoughDataException {
+        final double[] data = {3, 7, 8, 12, 3, 7, 12, 12, 12, 18};
 
         System.out.println(Statistics.overallStatistics(data));
+    }
+
+    @Test
+    public void testMode() throws NotEnoughDataException {
+        final double[] data = {3};
+
+        final double[] modesAndTheirQuantity = Statistics.mode(data);
+
+        final int quantity =
+                (int) modesAndTheirQuantity[modesAndTheirQuantity.length - 1];
+
+        for (int index = 0; index < modesAndTheirQuantity.length - 1; ++index) {
+            System.out.println(modesAndTheirQuantity[index] + " : " + quantity);
+        }
     }
 }

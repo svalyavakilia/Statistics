@@ -1,6 +1,8 @@
 package statistics;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * This is a utility class which provides methods for data analysis.
@@ -27,13 +29,12 @@ public class Statistics {
      */
     private static void checkIfDataIsValid(final double[] data,
                                            final int minimumPermissibleLength)
-                                            throws NullPointerException,
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         if (data == null) {
             throw new NullPointerException();
         } else if (data.length < minimumPermissibleLength) {
-            final String message = "Data doesn't have enough data!" + 
-                                   "Minimum quantity of elements needed: " + 
+            final String message = "There is not enough data!" +
+                                   "Minimum quantity of values needed: " +
                                    minimumPermissibleLength + ".";
 
             throw new NotEnoughDataException(message);
@@ -46,13 +47,8 @@ public class Statistics {
      * @param data array to sort.
      * @return reference to the same array object but sorted.
      * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data is empty.
      */
-    public static double[] sortInAscendingOrder(final double[] data)
-                                            throws NullPointerException,
-                                                   NotEnoughDataException {
-        checkIfDataIsValid(data, 0);
-
+    public static double[] sortInAscendingOrder(final double[] data) {
         Arrays.sort(data);
 
         return data;
@@ -64,13 +60,8 @@ public class Statistics {
      * @param data array to sort.
      * @return reference to the same array object but sorted.
      * @throws NullPointerException if data is null.
-     * @throws NotEnoughDataException if data is empty.
      */
-    public static double[] sortInDescendingOrder(final double[] data)
-                                            throws NullPointerException, 
-                                                   NotEnoughDataException {
-        checkIfDataIsValid(data, 0);
-
+    public static double[] sortInDescendingOrder(final double[] data) {
         Arrays.sort(data);
 
         for (int index = 0; index < data.length / 2; ++index) {
@@ -86,16 +77,11 @@ public class Statistics {
      * @param data array in which two items will be swapped.
      * @param firstIndex index of the first value to swap.
      * @param secondIndex index of the second value to swap.
-     * @throws NullPointerException if data is null.                   
-     * @throws NotEnoughDataException if data has less than two values.
+     * @throws NullPointerException if data is null.
      */
     private static void swap(final double[] data,
                              final int firstIndex,
-                             final int secondIndex)
-                                            throws NullPointerException, 
-                                                   NotEnoughDataException {
-        checkIfDataIsValid(data, 2);
-
+                             final int secondIndex) {
         final double valueUnderTheFirstIndex = data[firstIndex];
         data[firstIndex] = data[secondIndex];
         data[secondIndex] = valueUnderTheFirstIndex;
@@ -109,8 +95,8 @@ public class Statistics {
      * @throws NullPointerException if data is null.
      * @throws NotEnoughDataException if data is empty.
      */
-    public static double min(final double[] data) throws NullPointerException, 
-                                                         NotEnoughDataException {
+    public static double min(final double[] data)
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         double currentMinimum = data[0];
@@ -133,8 +119,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data is empty.
      */
     public static double max(final double[] data)
-                                            throws NullPointerException,
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         double currentMax = data[0];
@@ -157,8 +142,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data is empty.
      */
     public static double averageArithmetic(final double[] data)
-                                            throws NullPointerException, 
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         double sum = 0;
@@ -179,8 +163,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data is empty.
      */
     public static double median(final double[] data)
-                                            throws NullPointerException, 
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 1);
 
         Arrays.sort(data);
@@ -208,8 +191,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data has less than two values.
      */
     public static double firstQuartile(final double[] data)
-                                            throws NullPointerException, 
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         sortInAscendingOrder(data);
@@ -228,8 +210,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data has less than two values.
      */
     public static double thirdQuartile(final double[] data)
-                                            throws NullPointerException, 
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         sortInAscendingOrder(data);
@@ -255,8 +236,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data has less than two values.
      */
     public static double iqr(final double[] data)
-                                            throws NullPointerException,
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         return thirdQuartile(data) - firstQuartile(data);
@@ -272,8 +252,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data has less than two values.
      */
     public static double threeOverTwoIqr(final double[] data)
-                                            throws NullPointerException, 
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         return (double) 3 / 2 * iqr(data);
@@ -288,8 +267,7 @@ public class Statistics {
      * @throws NotEnoughDataException if data has less than two values.
      */
     public static double variance(final double[] data)
-                                            throws NullPointerException,
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 2);
 
         double variance = (double) 1 / (data.length - 1);
@@ -308,6 +286,66 @@ public class Statistics {
     }
 
     /**
+     * This method returns mode(s) and their quantity.
+     *
+     * @param data array to find mode(s) of.
+     * @return an array with modes and (!!!) their quantity as the last value of
+     *         the array.
+     * @throws NullPointerException is data is null.
+     * @throws NotEnoughDataException if data is empty.
+     */
+    public static double[] mode(final double[] data)
+            throws NotEnoughDataException {
+        checkIfDataIsValid(data, 1);
+
+        sortInAscendingOrder(data);
+
+        final List<Double> modes = new ArrayList<>();
+
+        int currentMaximumQuantity = 1;
+        int currentQuantity;
+        int currentIndex = 0;
+
+        double currentValue;
+
+        while (currentIndex < data.length) {
+            currentValue = data[currentIndex];
+            currentQuantity = 1;
+
+            ++currentIndex;
+
+            while (currentIndex < data.length
+                    &&
+                    data[currentIndex] == currentValue) {
+                ++currentQuantity;
+
+                ++currentIndex;
+            }
+
+            if (currentQuantity == currentMaximumQuantity) {
+                modes.add(currentValue);
+            } else if (currentQuantity > currentMaximumQuantity) {
+                currentMaximumQuantity = currentQuantity;
+
+                modes.clear();
+
+                modes.add(currentValue);
+            }
+        }
+
+        final double[] modesAndTheirQuantity = new double[modes.size() + 1];
+
+        for (int index = 0; index < modes.size(); ++index) {
+            modesAndTheirQuantity[index] = modes.get(index);
+        }
+
+        modesAndTheirQuantity[modesAndTheirQuantity.length - 1] =
+                currentMaximumQuantity;
+
+        return modesAndTheirQuantity;
+    }
+
+    /**
      * This method returns an overall statistics on this data.
      *
      * @param data array with values.
@@ -316,13 +354,33 @@ public class Statistics {
      * @throws NotEnoughDataException if data has less than two values.
      */
     public static String overallStatistics(final double[] data)
-                                            throws NullPointerException,
-                                                   NotEnoughDataException {
+                                            throws NotEnoughDataException {
         checkIfDataIsValid(data, 2);
+
+        final StringBuilder modes = new StringBuilder("Mode(s): ");
+
+        final double[] modesAndTheirQuantity = mode(data);
+
+        // [3, 5, 7, 10], length == 4
+        //  0, 1, 2, 3
+        for (int index = 0; index < modesAndTheirQuantity.length - 1; ++index) {
+            if (index != modesAndTheirQuantity.length - 2) {
+                modes.append(modesAndTheirQuantity[index]).append(", ");
+            } else {
+                modes.append(modesAndTheirQuantity[index]);
+            }
+        }
+
+        final int modeQuantity =
+                (int) modesAndTheirQuantity[modesAndTheirQuantity.length - 1];
+
+        modes.append("; quantity: ")
+             .append(modeQuantity);
 
         return "Minimum: " + min(data) + "\n" +
                "Maximum: " + max(data) + "\n" +
                "Average arithmetic: " + averageArithmetic(data) + "\n" +
+               modes.toString() + "\n" +
                "First quartile: " + firstQuartile(data) + "\n" +
                "Median: " + median(data) + "\n" +
                "Third quartile: " + thirdQuartile(data) + "\n" +
